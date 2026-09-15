@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceHub — Elite Freelance Marketplace & Talent Platform</title>
+    <meta name="description"
+        content="Connect with top 1% verified freelancers in software development, AI, UI/UX design, and growth. Secure milestone escrow and transparent hiring.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: {
+                            950: '#111111',
+                            900: '#1A1A1A',
+                            800: '#2D2D2D',
+                            700: '#3D3D3D',
+                        },
+                        crimson: {
+                            700: '#8B1414',
+                            600: '#A91818',
+                            500: '#C41E1E',
+                            400: '#E83232',
+                            300: '#F06060',
+                        },
+                        rosegray: '#B8A8A8',
+                        warmwhite: '#F5F3F3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-warmwhite text-charcoal-950 antialiased selection:bg-crimson-500 selection:text-white">
+
+    <!-- ============ HEADER / NAVBAR ============ -->
+    <header id="navbar" class="glass-header fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="/" class="flex items-center group">
+                    <img src="/assets/logo.png" alt="FreelanceHub Logo"
+                        class="h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-warmwhite/70">
+                    <a href="#jobs" class="hover:text-white transition-colors">Explore Jobs</a>
+                    <a href="#freelancers" class="hover:text-white transition-colors">Find Talent</a>
+                    <a href="#categories" class="hover:text-white transition-colors">Categories</a>
+                    <a href="#testimonials" class="hover:text-white transition-colors">Enterprise</a>
+                </nav>
+
+                <!-- Action CTA (auth-aware — updated by app.js) -->
+                <div class="hidden md:flex items-center space-x-4 nav-actions-desktop">
+                    <a href="/login.html"
+                        class="text-sm font-semibold text-warmwhite/70 hover:text-white transition-colors px-3 py-2">Log In</a>
+                    <a href="/register.html"
+                        class="bg-crimson-500 hover:bg-crimson-400 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md shadow-crimson-500/30 hover:shadow-crimson-500/50">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden text-warmwhite/70 hover:text-white p-2"
+                    aria-label="Open menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal-950/95 border-b border-crimson-700/30 px-4 py-6 space-y-4 text-center">
+            <a href="#jobs" class="block text-warmwhite/70 hover:text-white py-2">Explore Jobs</a>
+            <a href="#freelancers" class="block text-warmwhite/70 hover:text-white py-2">Find Talent</a>
+            <a href="#categories" class="block text-warmwhite/70 hover:text-white py-2">Categories</a>
+            <div class="pt-4 border-t border-crimson-700/30 flex flex-col space-y-3 nav-actions-mobile">
+                <a href="/login.html" class="text-warmwhite/70 hover:text-white py-2 font-semibold">Log In</a>
+                <a href="/register.html" class="bg-crimson-500 text-white py-3 rounded-xl font-bold shadow-md text-center">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="hero"
+        class="hero-glow-bg min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden bg-grid-pattern">
+        <!-- Subtle Gradient Orbs -->
+        <div class="radial-glow-1"></div>
+        <div class="radial-glow-2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-charcoal-900/80 border border-crimson-500/25 text-xs text-warmwhite/70">
+                        <span class="w-2 h-2 rounded-full bg-crimson-400 animate-pulse"></span>
+                        <span class="font-semibold text-warmwhite">For Freelance Professionals</span>
+                        <span class="text-charcoal-700">•</span>
+                        <span class="text-warmwhite/60">Zero Commission Cuts</span>
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+                        Your skills deserve <span
+                            class="bg-gradient-to-r from-crimson-300 via-crimson-400 to-crimson-500 bg-clip-text text-transparent">better
+                            projects & pay.</span>
+                    </h1>
+
+                    <p class="text-lg text-warmwhite/70 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        Browse top freelance projects from verified Indian startups and global companies. Secure escrow payments, direct client contact — no middlemen.
+                    </p>
+
+                    <!-- Search Component -->
+                    <div
+                        class="max-w-xl mx-auto lg:mx-0 bg-charcoal-900/90 border border-crimson-500/25 rounded-2xl p-2 shadow-2xl flex flex-col sm:flex-row gap-2">
+                        <div class="relative flex-1 flex items-center">
+                            <i class="fas fa-briefcase text-crimson-400 pl-4 pr-3"></i>
+                            <input type="text" id="hero-search" placeholder="Find React, Python, UI/UX, Flutter projects..."
+                                class="w-full bg-transparent text-white placeholder-charcoal-700 text-sm focus:outline-none py-3">
+                        </div>
+                        <button id="search-btn"
+                            class="bg-crimson-500 hover:bg-crimson-400 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all shadow-md shadow-crimson-500/30 flex items-center justify-center space-x-2">
+                            <span>Find Projects</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Freelancer-Centric Metrics -->
+                    <div class="pt-4 grid grid-cols-3 gap-6 max-w-lg mx-auto lg:mx-0 border-t border-charcoal-800/80">
+                        <div>
+                            <div class="text-2xl font-extrabold text-white">₹<span class="count-up"
+                                    data-target="2">0</span>Cr+</div>
+                            <div class="text-xs font-medium text-warmwhite/50 mt-0.5">Earned by Freelancers</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-white"><span class="count-up"
+                                    data-target="120">0</span>k+</div>
+                            <div class="text-xs font-medium text-warmwhite/50 mt-0.5">Projects Posted</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-white"><span class="count-up"
+                                    data-target="50">0</span>k+</div>
+                            <div class="text-xs font-medium text-warmwhite/50 mt-0.5">Active Freelancers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual — Live Projects Feed -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="w-full max-w-[400px] relative">
+
+                        <!-- Live Projects Pill -->
+                        <div class="flex justify-center mb-5">
+                            <div class="bg-charcoal-900/90 border border-crimson-500/25 backdrop-blur-xl rounded-full px-4 py-2 flex items-center gap-2.5 shadow-xl">
+                                <span class="w-2 h-2 rounded-full bg-crimson-400 animate-pulse flex-shrink-0"></span>
+                                <span class="text-xs font-semibold text-white">340 new projects posted today</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Glass Container — Live Projects Feed -->
+                        <div class="bg-charcoal-900/70 border border-crimson-500/15 rounded-3xl p-5 backdrop-blur-xl shadow-2xl">
+
+                            <!-- Header -->
+                            <div class="flex items-center justify-between mb-4">
+                                <p class="text-white text-sm font-bold">Live Projects</p>
+                                <a href="#jobs" class="text-crimson-400 text-xs font-semibold hover:text-crimson-300 transition-colors">View all →</a>
+                            </div>
+
+                            <!-- Project cards -->
+                            <div class="space-y-3">
+
+                                <!-- Project 1 -->
+                                <div class="bg-charcoal-950/80 rounded-2xl p-3.5 border border-charcoal-800/60 hover:border-crimson-500/40 transition-all duration-300 cursor-pointer group">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <div>
+                                            <p class="text-white text-xs font-bold group-hover:text-crimson-300 transition-colors">AI Dashboard — React & Python</p>
+                                            <p class="text-warmwhite/40 text-[10px] mt-0.5">TechNova India · Remote</p>
+                                        </div>
+                                        <span class="text-crimson-400 text-xs font-extrabold whitespace-nowrap ml-2">₹1.5L</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">React</span>
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">Python</span>
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">FastAPI</span>
+                                        <span class="text-warmwhite/30 text-[10px] ml-auto">2h ago</span>
+                                    </div>
+                                </div>
+
+                                <!-- Project 2 -->
+                                <div class="bg-charcoal-950/80 rounded-2xl p-3.5 border border-charcoal-800/60 hover:border-crimson-500/40 transition-all duration-300 cursor-pointer group">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <div>
+                                            <p class="text-white text-xs font-bold group-hover:text-crimson-300 transition-colors">Flutter E-Commerce App</p>
+                                            <p class="text-warmwhite/40 text-[10px] mt-0.5">StartupX · Bengaluru</p>
+                                        </div>
+                                        <span class="text-crimson-400 text-xs font-extrabold whitespace-nowrap ml-2">₹80K</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">Flutter</span>
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">Firebase</span>
+                                        <span class="text-warmwhite/30 text-[10px] ml-auto">5h ago</span>
+                                    </div>
+                                </div>
+
+                                <!-- Project 3 -->
+                                <div class="bg-charcoal-950/80 rounded-2xl p-3.5 border border-charcoal-800/60 hover:border-crimson-500/40 transition-all duration-300 cursor-pointer group">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <div>
+                                            <p class="text-white text-xs font-bold group-hover:text-crimson-300 transition-colors">Brand Identity & Figma Design</p>
+                                            <p class="text-warmwhite/40 text-[10px] mt-0.5">Zara Digital · Mumbai</p>
+                                        </div>
+                                        <span class="text-crimson-400 text-xs font-extrabold whitespace-nowrap ml-2">₹45K</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">Figma</span>
+                                        <span class="px-2 py-0.5 rounded-md bg-charcoal-900 text-warmwhite/50 text-[10px] border border-charcoal-800">UI/UX</span>
+                                        <span class="text-warmwhite/30 text-[10px] ml-auto">8h ago</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Bottom CTA strip -->
+                            <div class="mt-4 pt-4 border-t border-charcoal-800/60 flex items-center justify-between">
+                                <div class="text-[11px] text-warmwhite/40">Escrow-protected payments</div>
+                                <a href="/register.html"
+                                    class="bg-crimson-500 hover:bg-crimson-400 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all shadow-md shadow-crimson-500/30">
+                                    Apply Now
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section id="categories" class="py-24 bg-warmwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="section-tag">CATEGORIES</span>
+                <h2 class="section-heading text-3xl sm:text-4xl mt-2 mb-4">Explore Top Domain Expertise</h2>
+                <p class="text-charcoal-800 text-base">Find pre-vetted specialists across high-demand technology and
+                    creative disciplines.</p>
+            </div>
+
+            <div id="category-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+
+    <!-- ============ FEATURED JOBS ============ -->
+    <section id="jobs" class="py-24 bg-warmwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal">
+                <div>
+                    <span class="section-tag">CURATED LISTINGS</span>
+                    <h2 class="section-heading text-3xl sm:text-4xl mt-2">Featured Opportunities</h2>
+                </div>
+                <a href="/post-job.html"
+                    class="mt-4 md:mt-0 text-crimson-500 font-bold text-sm hover:text-crimson-400 flex items-center space-x-1"
+                    data-action="post-job">
+                    <span>Post a Job Opportunity</span>
+                    <i class="fas fa-plus text-xs ml-1"></i>
+                </a>
+            </div>
+
+            <div id="job-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loading skeleton -->
+                <div class="modern-card p-6 animate-pulse">
+                    <div class="h-4 bg-warmwhite rounded w-3/4 mb-4"></div>
+                    <div class="h-3 bg-warmwhite rounded w-1/2 mb-6"></div>
+                    <div class="h-8 bg-warmwhite rounded w-full"></div>
+                </div>
+                <div class="modern-card p-6 animate-pulse">
+                    <div class="h-4 bg-warmwhite rounded w-3/4 mb-4"></div>
+                    <div class="h-3 bg-warmwhite rounded w-1/2 mb-6"></div>
+                    <div class="h-8 bg-warmwhite rounded w-full"></div>
+                </div>
+                <div class="modern-card p-6 animate-pulse">
+                    <div class="h-4 bg-warmwhite rounded w-3/4 mb-4"></div>
+                    <div class="h-3 bg-warmwhite rounded w-1/2 mb-6"></div>
+                    <div class="h-8 bg-warmwhite rounded w-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ VETTED FREELANCERS ============ -->
+    <section id="freelancers" class="py-24 bg-charcoal-950/5 border-t border-crimson-700/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal">
+                <div>
+                    <span class="section-tag">FEATURED TALENT</span>
+                    <h2 class="section-heading text-3xl sm:text-4xl mt-2">Top 1% Vetted Freelancers</h2>
+                </div>
+                <a href="#"
+                    class="mt-4 md:mt-0 text-crimson-500 font-bold text-sm hover:text-crimson-400 flex items-center space-x-1">
+                    <span>View All Candidates</span>
+                    <i class="fas fa-arrow-right text-xs ml-1"></i>
+                </a>
+            </div>
+
+            <div id="freelancer-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Loading skeleton -->
+                <div class="modern-card p-6 animate-pulse text-center">
+                    <div class="w-20 h-20 bg-warmwhite rounded-full mx-auto mb-4"></div>
+                    <div class="h-4 bg-warmwhite rounded w-1/2 mx-auto mb-2"></div>
+                    <div class="h-3 bg-warmwhite rounded w-3/4 mx-auto"></div>
+                </div>
+                <div class="modern-card p-6 animate-pulse text-center">
+                    <div class="w-20 h-20 bg-warmwhite rounded-full mx-auto mb-4"></div>
+                    <div class="h-4 bg-warmwhite rounded w-1/2 mx-auto mb-2"></div>
+                    <div class="h-3 bg-warmwhite rounded w-3/4 mx-auto"></div>
+                </div>
+                <div class="modern-card p-6 animate-pulse text-center">
+                    <div class="w-20 h-20 bg-warmwhite rounded-full mx-auto mb-4"></div>
+                    <div class="h-4 bg-warmwhite rounded w-1/2 mx-auto mb-2"></div>
+                    <div class="h-3 bg-warmwhite rounded w-3/4 mx-auto"></div>
+                </div>
+                <div class="modern-card p-6 animate-pulse text-center">
+                    <div class="w-20 h-20 bg-warmwhite rounded-full mx-auto mb-4"></div>
+                    <div class="h-4 bg-warmwhite rounded w-1/2 mx-auto mb-2"></div>
+                    <div class="h-3 bg-warmwhite rounded w-3/4 mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="testimonials" class="py-24 bg-warmwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="section-tag">TRUSTED GLOBALLY</span>
+                <h2 class="section-heading text-3xl sm:text-4xl mt-2 mb-4">What Freelancers & Clients Say</h2>
+                <p class="text-charcoal-800 text-base">Real stories from professionals who found their best projects and clients on FreelanceHub.</p>
+            </div>
+
+            <div id="testimonial-grid" class="grid md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- ============ CALL TO ACTION BANNER ============ -->
+    <section id="cta" class="py-20 relative bg-charcoal-950 text-white overflow-hidden">
+        <div class="radial-glow-1"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                Ready to earn more from your skills?
+            </h2>
+            <p class="text-warmwhite/60 text-lg max-w-2xl mx-auto font-normal">
+                Join 50,000+ verified freelancers already landing top projects with secure escrow and direct client access.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <a href="/register.html"
+                    class="bg-crimson-500 hover:bg-crimson-400 text-white font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg shadow-crimson-500/30">
+                    <i class="fas fa-briefcase mr-2"></i>Find Projects Now
+                </a>
+                <a href="/post-job.html"
+                    class="bg-charcoal-900 hover:bg-charcoal-800 text-warmwhite/80 font-bold px-8 py-4 rounded-xl text-base border border-charcoal-800 transition-all">
+                    <i class="fas fa-plus mr-2"></i>Post a Job
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-charcoal-950 text-warmwhite/50 py-16 border-t border-crimson-700/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-2">
+                    <a href="/" class="inline-flex items-center mb-4">
+                        <img src="/assets/logo.png" alt="FreelanceHub Logo" class="h-12 w-auto object-contain" />
+                    </a>
+                    <p class="text-sm text-warmwhite/40 max-w-sm leading-relaxed mb-4">
+                        The premium marketplace for verified tech & creative talent. Delivering milestone protection and
+                        global hiring clarity.
+                    </p>
+                    <div class="flex space-x-3 text-warmwhite/40">
+                        <a href="#"
+                            class="w-8 h-8 rounded-lg bg-charcoal-900 border border-charcoal-800 flex items-center justify-center hover:text-crimson-400 transition-colors"
+                            aria-label="Twitter"><i class="fab fa-twitter text-xs"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-lg bg-charcoal-900 border border-charcoal-800 flex items-center justify-center hover:text-crimson-400 transition-colors"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in text-xs"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-lg bg-charcoal-900 border border-charcoal-800 flex items-center justify-center hover:text-crimson-400 transition-colors"
+                            aria-label="GitHub"><i class="fab fa-github text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">For Clients</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="/post-job.html" class="hover:text-crimson-400 transition-colors">Post a Job</a></li>
+                        <li><a href="#freelancers" class="hover:text-crimson-400 transition-colors">Talent Marketplace</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Escrow Security</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Enterprise Plan</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">For Talent</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#jobs" class="hover:text-crimson-400 transition-colors">Browse Projects</a></li>
+                        <li><a href="/register.html" class="hover:text-crimson-400 transition-colors">Verification Badge</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Direct Payouts</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Freelancer Guide</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Platform</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Trust & Safety</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-crimson-400 transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-charcoal-800/60 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-warmwhite/30">
+                <p>© 2026 FreelanceHub Inc. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Crafted with precision & modern web standards.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-[100] flex flex-col space-y-3"></div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

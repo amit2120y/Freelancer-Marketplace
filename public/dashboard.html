@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — FreelanceHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: { 950: '#111111', 900: '#1A1A1A', 800: '#2D2D2D', 700: '#3D3D3D' },
+                        crimson: { 700: '#8B1414', 600: '#A91818', 500: '#C41E1E', 400: '#E83232', 300: '#F06060' },
+                        rosegray: '#B8A8A8',
+                        warmwhite: '#F5F3F3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-charcoal-950 min-h-screen antialiased selection:bg-crimson-500 selection:text-white">
+    <!-- Background Effects -->
+    <div class="radial-glow-1"></div>
+
+    <!-- Top Navigation -->
+    <header class="glass-header fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center group">
+                    <img src="/assets/logo.png" alt="FreelanceHub Logo"
+                        class="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-sm font-medium text-warmwhite/50 hover:text-white transition-colors">
+                        <i class="fas fa-home mr-1"></i> Home
+                    </a>
+                    <button id="logout-btn" class="text-sm font-medium text-warmwhite/50 hover:text-crimson-400 transition-colors">
+                        <i class="fas fa-sign-out-alt mr-1"></i> Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <!-- User Header -->
+        <div class="flex items-center space-x-5 mb-10">
+            <img id="dash-user-avatar" src="" alt="Avatar"
+                class="w-16 h-16 rounded-2xl object-cover border-2 border-crimson-500/50 shadow-lg">
+            <div>
+                <h1 id="dash-user-name" class="text-2xl font-extrabold text-white"></h1>
+                <p id="dash-user-role" class="text-sm text-warmwhite/50 font-medium"></p>
+            </div>
+        </div>
+
+        <!-- ═══ CLIENT DASHBOARD ═══ -->
+        <div id="client-section" class="hidden space-y-8">
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Jobs Posted</p>
+                    <p id="stat-posted-jobs" class="text-3xl font-extrabold text-white">0</p>
+                </div>
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Total Proposals</p>
+                    <p id="stat-total-proposals" class="text-3xl font-extrabold text-crimson-400">0</p>
+                </div>
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Active Contracts</p>
+                    <p id="stat-active-contracts" class="text-3xl font-extrabold text-emerald-400">0</p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-white">My Posted Jobs</h2>
+                <a href="/post-job.html"
+                    class="bg-crimson-500 hover:bg-crimson-400 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md shadow-crimson-500/30">
+                    <i class="fas fa-plus mr-1.5"></i> Post New Job
+                </a>
+            </div>
+
+            <!-- Jobs List -->
+            <div id="my-jobs-list" class="space-y-3">
+                <div class="bg-charcoal-900/50 rounded-xl p-5 animate-pulse">
+                    <div class="h-4 bg-charcoal-800 rounded w-3/4 mb-2"></div>
+                    <div class="h-3 bg-charcoal-800 rounded w-1/2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ FREELANCER DASHBOARD ═══ -->
+        <div id="freelancer-section" class="hidden space-y-8">
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Proposals Sent</p>
+                    <p id="stat-proposals-sent" class="text-3xl font-extrabold text-white">0</p>
+                </div>
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Accepted</p>
+                    <p id="stat-accepted" class="text-3xl font-extrabold text-emerald-400">0</p>
+                </div>
+                <div class="bg-charcoal-900/80 border border-charcoal-800 rounded-xl p-5">
+                    <p class="text-xs text-warmwhite/50 font-medium mb-1">Pending</p>
+                    <p id="stat-pending" class="text-3xl font-extrabold text-amber-400">0</p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-white">My Proposals</h2>
+                <a href="/"
+                    class="text-crimson-400 hover:text-crimson-300 text-sm font-semibold transition-colors">
+                    Browse Jobs <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Proposals List -->
+            <div id="my-proposals-list" class="space-y-3">
+                <div class="bg-charcoal-900/50 rounded-xl p-5 animate-pulse">
+                    <div class="h-4 bg-charcoal-800 rounded w-3/4 mb-2"></div>
+                    <div class="h-3 bg-charcoal-800 rounded w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

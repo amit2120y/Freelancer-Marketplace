@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job — FreelanceHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: { 950: '#111111', 900: '#1A1A1A', 800: '#2D2D2D', 700: '#3D3D3D' },
+                        crimson: { 700: '#8B1414', 600: '#A91818', 500: '#C41E1E', 400: '#E83232', 300: '#F06060' },
+                        rosegray: '#B8A8A8',
+                        warmwhite: '#F5F3F3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-charcoal-950 min-h-screen antialiased selection:bg-crimson-500 selection:text-white">
+    <!-- Background Effects -->
+    <div class="radial-glow-1"></div>
+
+    <!-- Top Navigation -->
+    <header class="glass-header fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center group">
+                    <img src="/assets/logo.png" alt="FreelanceHub Logo"
+                        class="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="/dashboard.html" class="text-sm font-medium text-warmwhite/50 hover:text-white transition-colors">
+                        <i class="fas fa-th-large mr-1"></i> Dashboard
+                    </a>
+                    <a href="/" class="text-sm font-medium text-warmwhite/50 hover:text-white transition-colors">
+                        <i class="fas fa-home mr-1"></i> Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-extrabold text-white mb-2">Post a New Job</h1>
+            <p class="text-warmwhite/50 text-sm">Fill in the details below to publish your job listing to the marketplace.</p>
+        </div>
+
+        <!-- Post Job Card -->
+        <div class="bg-charcoal-900/90 border border-crimson-500/20 rounded-2xl p-8 shadow-2xl backdrop-blur-xl">
+            <!-- Error / Success Messages -->
+            <div id="post-job-error" class="hidden mb-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl px-4 py-3">
+            </div>
+            <div id="post-job-success" class="hidden mb-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm rounded-xl px-4 py-3">
+            </div>
+
+            <form id="post-job-form" class="space-y-5">
+                <!-- Title -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Job Title *</label>
+                    <input type="text" id="job-title" placeholder="e.g. Senior Full-Stack Architect (Next.js & GraphQL)" required
+                        class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Company Name *</label>
+                    <input type="text" id="job-company" placeholder="e.g. TechNova India" required
+                        class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                </div>
+
+                <!-- Budget & Type -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Budget (₹) *</label>
+                        <input type="text" id="job-budget" placeholder="e.g. ₹1,50,000 - ₹3,00,000" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Type</label>
+                        <select id="job-type"
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all appearance-none cursor-pointer">
+                            <option value="Contract">Contract</option>
+                            <option value="Fixed Price">Fixed Price</option>
+                            <option value="Milestone">Milestone</option>
+                            <option value="Monthly Retainer">Monthly Retainer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category & Location -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Category *</label>
+                        <select id="job-category" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all appearance-none cursor-pointer">
+                            <option value="">Select category</option>
+                            <option value="Development">Development</option>
+                            <option value="AI & Data Science">AI & Data Science</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Mobile Development">Mobile Development</option>
+                            <option value="DevOps & Cloud">DevOps & Cloud</option>
+                            <option value="Marketing & Growth">Marketing & Growth</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Location</label>
+                        <input type="text" id="job-location" placeholder="Bengaluru (Remote)" value="Bengaluru (Remote)"
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Required Skills (comma-separated)</label>
+                    <input type="text" id="job-skills" placeholder="e.g. Next.js, TypeScript, GraphQL, Tailwind CSS"
+                        class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Job Description</label>
+                    <textarea id="job-description" rows="5" placeholder="Describe the project, requirements, deliverables..."
+                        class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all resize-none"></textarea>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-crimson-500 hover:bg-crimson-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-crimson-500/30 text-sm">
+                    <i class="fas fa-paper-plane mr-2"></i> Post Job
+                </button>
+            </form>
+        </div>
+
+        <!-- Back link -->
+        <div class="text-center mt-6">
+            <a href="/dashboard.html" class="text-warmwhite/30 hover:text-warmwhite/70 text-sm transition-colors">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Dashboard
+            </a>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/post-job.js"></script>
+</body>
+</html>

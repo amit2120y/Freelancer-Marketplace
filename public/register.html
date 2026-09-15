@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — FreelanceHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: { 950: '#111111', 900: '#1A1A1A', 800: '#2D2D2D', 700: '#3D3D3D' },
+                        crimson: { 700: '#8B1414', 600: '#A91818', 500: '#C41E1E', 400: '#E83232', 300: '#F06060' },
+                        rosegray: '#B8A8A8',
+                        warmwhite: '#F5F3F3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="bg-charcoal-950 min-h-screen flex items-center justify-center antialiased selection:bg-crimson-500 selection:text-white py-12">
+    <!-- Background Effects -->
+    <div class="radial-glow-1"></div>
+    <div class="radial-glow-2"></div>
+
+    <div class="relative z-10 w-full max-w-lg px-6">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="/" class="inline-flex items-center group">
+                <img src="/assets/logo.png" alt="FreelanceHub Logo"
+                    class="h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
+            </a>
+            <p class="text-warmwhite/50 text-sm mt-3">Create your account and join the marketplace.</p>
+        </div>
+
+        <!-- Register Card -->
+        <div class="bg-charcoal-900/90 border border-crimson-500/20 rounded-2xl p-8 shadow-2xl backdrop-blur-xl">
+            <!-- Error Message -->
+            <div id="register-error" class="hidden mb-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-xl px-4 py-3 flex items-center gap-2">
+                <i class="fas fa-exclamation-circle"></i>
+                <span></span>
+            </div>
+
+            <!-- Google Sign-Up Button -->
+            <div class="mb-6 space-y-3">
+                <button type="button" id="btn-google-signin"
+                    class="w-full bg-charcoal-950 hover:bg-charcoal-950/80 border border-charcoal-800 text-white font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-3 text-sm shadow-sm">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span>Sign up with Google</span>
+                </button>
+                <div id="g_id_onload" class="hidden"></div>
+                <div id="g_id_signin" class="hidden flex justify-center"></div>
+            </div>
+
+            <div class="relative flex items-center justify-center my-5">
+                <div class="border-t border-charcoal-800 w-full"></div>
+                <span class="bg-charcoal-900 px-3 text-xs text-warmwhite/40 font-medium uppercase tracking-wider absolute">or register with email</span>
+            </div>
+
+            <form id="register-form" class="space-y-5">
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Full Name</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-crimson-500/60 text-sm"></i>
+                        <input type="text" id="reg-name" placeholder="John Doe" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl pl-11 pr-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Email Address</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-crimson-500/60 text-sm"></i>
+                        <input type="email" id="reg-email" placeholder="you@example.com" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl pl-11 pr-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Password</label>
+                        <input type="password" id="reg-password" placeholder="••••••••" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password" placeholder="••••••••" required
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <!-- Role Selection -->
+                <div>
+                    <label class="block text-sm font-semibold text-warmwhite/80 mb-2">I want to...</label>
+                    <select id="reg-role"
+                        class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all appearance-none cursor-pointer">
+                        <option value="client">Hire Freelancers (Client)</option>
+                        <option value="freelancer">Work as a Freelancer</option>
+                    </select>
+                </div>
+
+                <!-- Freelancer-Specific Fields (hidden by default) -->
+                <div id="freelancer-fields" class="hidden space-y-4 pt-2 border-t border-charcoal-800">
+                    <p class="text-crimson-400 text-xs font-bold uppercase tracking-wider">Freelancer Profile</p>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Professional Title</label>
+                        <input type="text" id="reg-title" placeholder="e.g. Senior Full-Stack Developer"
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Hourly Rate (₹)</label>
+                            <input type="number" id="reg-hourly" placeholder="1500" min="1"
+                                class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Location</label>
+                            <input type="text" id="reg-location" placeholder="Bengaluru, Karnataka"
+                                class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-warmwhite/80 mb-2">Skills (comma-separated)</label>
+                        <input type="text" id="reg-skills" placeholder="React, TypeScript, Node.js, AWS"
+                            class="w-full bg-charcoal-950/60 border border-charcoal-800 rounded-xl px-4 py-3 text-white text-sm placeholder-charcoal-700 focus:outline-none focus:ring-2 focus:ring-crimson-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-crimson-500 hover:bg-crimson-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-crimson-500/30 text-sm">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-warmwhite/50 text-sm">
+                    Already have an account?
+                    <a href="/login.html" class="text-crimson-400 hover:text-crimson-300 font-semibold transition-colors">Log in</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Back to home -->
+        <div class="text-center mt-6">
+            <a href="/" class="text-warmwhite/30 hover:text-warmwhite/70 text-sm transition-colors">
+                <i class="fas fa-arrow-left mr-1"></i> Back to FreelanceHub
+            </a>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

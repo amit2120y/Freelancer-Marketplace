@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════════════════════════════════════════
+   CLASSIC RED — Color Palette
+   #111111   charcoal-950  (darkest bg)
+   #1A1A1A   charcoal-900  (surface / dark elements)
+   #2D2D2D   charcoal-800  (cards / elevated surfaces)
+   #8B1414   crimson-700   (deep crimson)
+   #C41E1E   crimson-500   (primary red CTA)
+   #E83232   crimson-400   (hover / bright red)
+   #F06060   crimson-300   (light red accent)
+   #B8A8A8   rosegray      (warm muted text)
+   #F5F3F3   warmwhite     (light bg / off-white text)
+   ═══════════════════════════════════════════════ */
+
+:root {
+    /* ─── Core Palette ─── */
+    --charcoal-950: #111111;
+    --charcoal-900: #1A1A1A;
+    --charcoal-800: #2D2D2D;
+    --charcoal-700: #3D3D3D;
+    --crimson-700:  #8B1414;
+    --crimson-600:  #A91818;
+    --crimson-500:  #C41E1E;
+    --crimson-400:  #E83232;
+    --crimson-300:  #F06060;
+    --rosegray:     #B8A8A8;
+    --warmwhite:    #F5F3F3;
+
+    /* ─── Semantic Aliases ─── */
+    --primary:        var(--crimson-500);
+    --primary-hover:  var(--crimson-400);
+    --primary-light:  var(--crimson-300);
+    --accent:         #E83232;
+    --accent-light:   #F06060;
+
+    --bg-dark:      var(--charcoal-950);
+    --surface-dark: var(--charcoal-900);
+    --card-dark:    #221818;
+    --border-dark:  rgba(196, 30, 30, 0.18);
+
+    --text-primary: var(--warmwhite);
+    --text-muted:   var(--rosegray);
+}
+
+* {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--warmwhite);
+    color: var(--charcoal-950);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--charcoal-950); }
+::-webkit-scrollbar-thumb { background: var(--crimson-700); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--crimson-500); }
+
+/* ── Background Patterns ─────────────────────── */
+.bg-grid-pattern {
+    background-size: 32px 32px;
+    background-image:
+        linear-gradient(to right,  rgba(196, 30, 30, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(196, 30, 30, 0.05) 1px, transparent 1px);
+}
+
+.hero-glow-bg {
+    background: var(--charcoal-950);
+    position: relative;
+}
+
+.radial-glow-1 {
+    position: absolute;
+    top: -10%;
+    left: 20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(196, 30, 30, 0.20) 0%, rgba(17, 17, 17, 0) 70%);
+    pointer-events: none;
+    filter: blur(40px);
+}
+
+.radial-glow-2 {
+    position: absolute;
+    bottom: -10%;
+    right: 15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(139, 20, 20, 0.28) 0%, rgba(17, 17, 17, 0) 70%);
+    pointer-events: none;
+    filter: blur(50px);
+}
+
+/* ── Glassmorphism Navigation ────────────────── */
+.glass-header {
+    background: rgba(17, 17, 17, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(196, 30, 30, 0.20);
+}
+
+/* ── Cards ───────────────────────────────────── */
+.modern-card {
+    background: #FFFFFF;
+    border: 1px solid #E8DEDE;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(139, 20, 20, 0.14);
+    border-color: var(--crimson-500);
+}
+
+.dark-card {
+    background: var(--card-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.dark-card:hover {
+    border-color: rgba(196, 30, 30, 0.45);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.55);
+}
+
+/* ── Pill Badges ─────────────────────────────── */
+.pill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+.pill-primary {
+    background: rgba(196, 30, 30, 0.12);
+    color: var(--crimson-400);
+    border: 1px solid rgba(196, 30, 30, 0.28);
+}
+
+.pill-success {
+    background: rgba(16, 185, 129, 0.10);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* ── Skill Tags ──────────────────────────────── */
+.skill-tag {
+    background: #F0E8E8;
+    color: var(--crimson-700);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.625rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: #E0D0D0;
+    color: var(--charcoal-950);
+}
+
+/* ── Reveal Animations ───────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatSlow {
+    0%,  100% { transform: translateY(0px); }
+    50%        { transform: translateY(-10px); }
+}
+
+.animate-float-slow {
+    animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* ── Section Headings ────────────────────────── */
+.section-tag {
+    color: var(--crimson-500);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.section-heading {
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--charcoal-950);
+}
+
+/* ── Toast ───────────────────────────────────── */
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.toast-enter {
+    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Crimson Button ──────────────────────────────── */
+.btn-crimson {
+    background: var(--crimson-500);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 4px 18px rgba(196, 30, 30, 0.38);
+}
+
+.btn-crimson:hover {
+    background: var(--crimson-400);
+    box-shadow: 0 6px 24px rgba(196, 30, 30, 0.52);
+    transform: translateY(-1px);
+}
+
+/* ── Talent Grid Cards ───────────────────────────── */
+@keyframes cardFadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.talent-grid-card {
+    animation: cardFadeUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.talent-grid-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(196, 30, 30, 0.15);
+}
