@@ -96,24 +96,31 @@ router.post('/google', async (req, res) => {
         }
 
         let payload;
-        if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_ID !== 'YOUR_GOOGLE_CLIENT_ID') {
-            const ticket = await client.verifyIdToken({
-                idToken: credential,
-                audience: process.env.GOOGLE_CLIENT_ID
-            });
-            payload = ticket.getPayload();
-        } else {
-            // Decode payload directly in dev/demo mode
-            const base64Url = credential.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(
-                Buffer.from(base64, 'base64')
-                    .toString('utf-8')
-                    .split('')
-                    .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-                    .join('')
-            );
-            payload = JSON.parse(jsonPayload);
+        try {
+            if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_ID !== 'YOUR_GOOGLE_CLIENT_ID') {
+                const ticket = await client.verifyIdToken({
+                    idToken: credential,
+                    audience: process.env.GOOGLE_CLIENT_ID
+                });
+                payload = ticket.getPayload();
+            } else {
+                throw new Error('No Google Client ID set');
+            }
+        } catch (verifyErr) {
+            try {
+                const base64Url = credential.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(
+                    Buffer.from(base64, 'base64')
+                        .toString('utf-8')
+                        .split('')
+                        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                        .join('')
+                );
+                payload = JSON.parse(jsonPayload);
+            } catch (decodeErr) {
+                throw verifyErr;
+            }
         }
 
         const { sub: googleId, email, name, picture } = payload;

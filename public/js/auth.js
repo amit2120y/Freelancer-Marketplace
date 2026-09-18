@@ -122,15 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     google.accounts.id.initialize({
                         client_id: "422690163904-1bknh8sjnolu1s19g73453a18uv1n9le.apps.googleusercontent.com",
-                        callback: (response) => handleGoogleSignIn(response.credential, role)
+                        callback: (response) => handleGoogleSignIn(response.credential, role),
+                        auto_select: false
                     });
+
                     google.accounts.id.prompt((notification) => {
-                        if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                            // Fallback to quick simulated Google login for demonstration
+                        if (notification.isNotDisplayed() || notification.isSkippedMoment() || notification.isDismissedMoment()) {
+                            // If GIS popup is blocked, unconfigured, or closed, fallback to demo Google sign-in
                             triggerDemoGoogleLogin(role);
                         }
                     });
                 } catch (e) {
+                    console.warn('GIS error, falling back to demo login:', e);
                     triggerDemoGoogleLogin(role);
                 }
             } else {
